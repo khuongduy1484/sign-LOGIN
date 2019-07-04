@@ -1,0 +1,97 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<title>Sign up facundo farm & resort</title>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<head>
+</head>
+<body>
+<div class="container-fluid">
+  <div class="container">
+    <hr>
+    <div class="row">
+      <div class="col-md-5">
+        <form role="form" #userForm="ngForm" [formGroup]="register" >
+          <fieldset>
+            <p class="text-uppercase pull-center"> SIGN UP.</p>
+            <div class="form-group">
+              <input type="text" name="username" class="form-control input-lg" placeholder="username" [(ngModel)]="user.username" >
+            </div>
+            <div class="form-group">
+              <input type="email" id="email" class="form-control input-lg" placeholder="Email Address"
+                     [(ngModel)]="user.email" formControlName="email">
+            </div>
+            <div class="alert alert-danger" role="alert" *ngIf="register.get('email').invalid && register.get('email').touched"> Invalid email!
+
+            </div>
+            <div class="form-group">
+              <input type="text" name="age" id="age" class="form-control input-lg" placeholder="AGE"
+                     [(ngModel)]="user.age">
+            </div>
+            <fieldset formGroupName="pwGroup">
+            <div class="form-group">
+              <input type="password" formControlName="password"  class="form-control input-lg" placeholder="Password" [(ngModel)]="user.password">
+            </div>
+            <div class="form-group">
+              <input type="password" formControlName="confirmPassword" class="form-control input-lg" placeholder="Confirm Password" [(ngModel)]="user.confirmPassword">
+            </div>
+            </fieldset>
+            <div  class="alert alert-danger" role="alert" *ngIf="register.hasError('passwordnotmatch',['pwGroup']) && register.get('pwGroup').touched" >  Password does not match!
+
+            </div>
+            <div class="form-group">
+              Country :<select [(ngModel)]="user.country" id="country" class="form-control input-lg">
+                <option value="USA">USA</option>
+                <option value="VN">VN</option>
+                <option value="TQ">TQ</option>
+              </select>
+            </div>
+            <div class="form-group">Gerder :
+              <input type="radio" name="gender" [(ngModel)]="user.gender" value="Male" >Male
+              <input type="radio" name="gender"   [(ngModel)]="user.gender" value="Fermade">Fermade
+            </div>
+            <div class="form-group">
+              <input type="text" name="phone" class="form-control input-lg" placeholder="Phone Number" [(ngModel)]="user.phone">
+            </div>
+            <div>
+              <input type="submit" class="btn btn-lg btn-primary" value="Sign In">
+            </div>
+          </fieldset>
+        </form>
+        <h4>From Data</h4>
+        <p>{{userForm.value | json}}</p>
+      </div>
+
+      <div class="col-md-2">
+        <!-------null------>
+      </div>
+
+      <div class="col-md-5">
+        <form role="form">
+          <fieldset>
+            <p class="text-uppercase"> Login using your account: </p>
+
+            <div class="form-group">
+              <input type="email" name="username" id="username" class="form-control input-lg" placeholder="username">
+            </div>
+            <div class="form-group">
+              <input type="password" name="password" id="password" class="form-control input-lg" placeholder="Password">
+            </div>
+            <div>
+              <input type="submit" class="btn btn-md" value="Sign In" class="btn btn-lg btn-primary">
+            </div>
+          </fieldset>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+
+
+</html>
